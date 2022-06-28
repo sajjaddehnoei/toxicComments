@@ -1,0 +1,47 @@
+---
+title: "Natural Language Processing Using Toxic Comments"
+author: "Sajjad"
+date: '2022-05-03'
+output: html_document
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo=FALSE,comment="##",fig.width=9.5,fig.height=6.5,dpi=2*72, warning=F)
+options(dplyr.summarise.inform = FALSE)
+```
+
+```{r SetOutputDirectory}
+# This is necessary for knit_child to work properly when using "Run" in RStudio
+knitr::opts_knit$set(output.dir = ".")
+options(knitr.duplicate.label = 'allow')
+```
+
+
+```{r, include=FALSE,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(stringr)
+library(lubridate)
+library(tidytext)
+library(tm)
+library(wordcloud)
+library(wordcloud2)
+library(irlba)
+library(gridExtra)
+library(keras)
+library(tensorflow)
+library(fpp2)
+library(caret)
+library(MLmetrics)
+library(kaggler)
+library(here)
+```
+
+# Read data
+```{r}
+train <- read.csv(paste0(getwd(), "/data/train.csv"))
+test <- read.csv(paste0(getwd(), "/data/test.csv"))
+test_labels <- read.csv(paste0(getwd(), "/data/test_labels.csv"))
+```
+
+
+
